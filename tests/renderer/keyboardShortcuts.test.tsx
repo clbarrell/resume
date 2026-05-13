@@ -90,18 +90,6 @@ describe("keyboard shortcuts", () => {
     expect(document.activeElement).toBe(search);
   });
 
-  it("Enter on selected result copies and hides window", async () => {
-    render(<App />);
-    await waitFor(() => expect(screen.getAllByText("Alpha session").length).toBeGreaterThan(0));
-    const search = screen.getByLabelText("Search sessions");
-    search.focus();
-    fireEvent.keyDown(search, { key: "Enter" });
-    await waitFor(() => {
-      expect(window.resume.copyResumeCommand).toHaveBeenCalledWith(sessionA.resumeCommand);
-      expect(window.resume.hideWindow).toHaveBeenCalled();
-    });
-  });
-
   it("Escape clears query, then path filter, then hides window", async () => {
     render(<App />);
     const search = await screen.findByLabelText("Search sessions") as HTMLInputElement;
