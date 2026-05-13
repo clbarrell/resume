@@ -1,0 +1,21 @@
+{
+  "id": "amp-thread-env",
+  "title": "Amp env tree cwd",
+  "env": {
+    "initial": {
+      "trees": [
+        {
+          "displayName": "buildkite",
+          "uri": "file:///Users/example/Code/with%20space/buildkite"
+        }
+      ]
+    }
+  },
+  "messages": [
+    {
+      "role": "user",
+      "text": "ping",
+      "createdAt": "2026-05-08T08:00:00.000Z"
+    }
+  ]
+}

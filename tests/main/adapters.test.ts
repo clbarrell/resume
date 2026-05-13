@@ -32,9 +32,17 @@ describe("session adapters", () => {
 
   it("parses Amp thread json", async () => {
     const result = await ampAdapter.scan([path.join(fixtures, "amp")]);
-    expect(result.records[0].title).toBe("Amp router refactor");
-    expect(result.records[0].resumeCommand).toBe("cd '/Users/example/Code/amp demo' && amp threads continue 'amp-thread-1'");
-    expect(result.records[0].preview.files).toContain("app/router.ts");
+    const router = result.records.find((record) => record.id === "amp-thread-1");
+    expect(router?.title).toBe("Amp router refactor");
+    expect(router?.resumeCommand).toBe("cd '/Users/example/Code/amp demo' && amp threads continue 'amp-thread-1'");
+    expect(router?.preview.files).toContain("app/router.ts");
+  });
+
+  it("falls back to env.initial.trees[].uri for Amp cwd", async () => {
+    const result = await ampAdapter.scan([path.join(fixtures, "amp")]);
+    const envThread = result.records.find((record) => record.id === "amp-thread-env");
+    expect(envThread?.cwd).toBe("/Users/example/Code/with space/buildkite");
+    expect(envThread?.resumeCommand).toBe("cd '/Users/example/Code/with space/buildkite' && amp threads continue 'amp-thread-env'");
   });
 
   it("parses Pi tree sessions and uses session_info name as title", async () => {

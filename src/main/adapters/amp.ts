@@ -76,8 +76,25 @@ function getAmpMeta(objects: unknown[]): { id?: string; title?: string; cwd?: st
     const object = getObject(value);
     if (!object) continue;
     meta.id ??= getString(object.thread_id) ?? getString(object.threadId) ?? getString(object.id);
-    meta.cwd ??= getString(object.cwd) ?? getString(object.workingDirectory);
+    meta.cwd ??= getString(object.cwd) ?? getString(object.workingDirectory) ?? cwdFromAmpEnv(object.env);
     meta.title ??= getString(object.title) ?? getString(object.name);
   }
   return meta;
+}
+
+function cwdFromAmpEnv(env: unknown): string | undefined {
+  const trees = getArray(getObject(getObject(env)?.initial)?.trees);
+  for (const tree of trees) {
+    const uri = getString(getObject(tree)?.uri);
+    if (!uri) continue;
+    if (uri.startsWith("file://")) {
+      try {
+        return decodeURIComponent(uri.slice("file://".length));
+      } catch {
+        return uri.slice("file://".length);
+      }
+    }
+    if (uri.startsWith("/")) return uri;
+  }
+  return undefined;
 }
