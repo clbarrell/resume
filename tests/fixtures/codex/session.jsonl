@@ -1,0 +1,5 @@
+{"session_id":"codex one","cwd":"/Users/example/Code/demo app","timestamp":"2026-05-10T10:00:00.000Z"}
+{"type":"message","message":{"role":"user","content":"Find the flaky billing test in src/billing/spec.ts"},"timestamp":"2026-05-10T10:01:00.000Z"}
+{"type":"tool_call","name":"rg","content":"src/billing/spec.ts:42 failing assertion","timestamp":"2026-05-10T10:02:00.000Z"}
+{"type":"message","message":{"role":"assistant","content":"The flaky test is tied to a date boundary."},"timestamp":"2026-05-10T10:03:00.000Z"}
+{bad json

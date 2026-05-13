@@ -1,0 +1,3 @@
+{"sessionId":"claude-one","cwd":"/tmp/quoted ' path","timestamp":"2026-05-09T08:00:00.000Z"}
+{"type":"user","message":{"role":"user","content":[{"type":"text","text":"Update the queue insights copy"}]},"timestamp":"2026-05-09T08:01:00.000Z"}
+{"type":"assistant","message":{"role":"assistant","content":[{"type":"text","text":"I changed the empty state and added coverage."}]},"timestamp":"2026-05-09T08:02:00.000Z"}

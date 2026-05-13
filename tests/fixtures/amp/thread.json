@@ -1,0 +1,17 @@
+{
+  "id": "amp-thread-1",
+  "cwd": "/Users/example/Code/amp demo",
+  "title": "Amp router refactor",
+  "messages": [
+    {
+      "role": "user",
+      "text": "Refactor the router and mention app/router.ts",
+      "createdAt": "2026-05-08T08:00:00.000Z"
+    },
+    {
+      "role": "assistant",
+      "text": "Updated app/router.ts and tests.",
+      "createdAt": "2026-05-08T08:05:00.000Z"
+    }
+  ]
+}
