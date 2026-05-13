@@ -12,8 +12,8 @@ const SOURCE_LABELS: Record<SessionSource, string> = {
 
 const DEFAULT_ROOTS: Record<SessionSource, string[]> = {
   codex: ["~/.codex/session_index.jsonl", "~/.codex/sessions"],
-  claude: ["~/.claude/projects", "~/.claude/history.jsonl"],
-  amp: ["~/.local/share/amp/threads", "~/.local/share/amp/history.jsonl"],
+  claude: ["~/.claude/projects"],
+  amp: ["~/.local/share/amp/threads"],
   pi: ["~/.pi/agent/sessions"]
 };
 

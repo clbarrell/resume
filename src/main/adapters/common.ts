@@ -31,8 +31,8 @@ export function defaultRoots(): SourceRoots {
   const home = homedir();
   return {
     codex: [path.join(home, ".codex", "session_index.jsonl"), path.join(home, ".codex", "sessions")],
-    claude: [path.join(home, ".claude", "projects"), path.join(home, ".claude", "history.jsonl")],
-    amp: [path.join(home, ".local", "share", "amp", "threads"), path.join(home, ".local", "share", "amp", "history.jsonl")],
+    claude: [path.join(home, ".claude", "projects")],
+    amp: [path.join(home, ".local", "share", "amp", "threads")],
     pi: [path.join(home, ".pi", "agent", "sessions")]
   };
 }
