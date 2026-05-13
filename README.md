@@ -1,6 +1,16 @@
-# Resume
+<p align="center">
+  <img src="app-icon.png" alt="Resume" width="128" height="128" />
+</p>
 
-Local-first macOS utility that indexes past sessions from multiple AI coding assistants (Codex, Claude Code, Amp, Pi) and lets you search them and copy a shell command to resume one. Designed to be opened with a goal and closed within seconds — Spotlight/Raycast-style.
+<h1 align="center">Resume</h1>
+
+<p align="center">
+  Local-first macOS utility that indexes past sessions from multiple AI coding assistants (Codex, Claude Code, Amp, Pi) and lets you search them and copy a shell command to resume one. Designed to be opened with a goal and closed within seconds — Spotlight/Raycast-style.
+</p>
+
+<p align="center">
+  <img src="docs/screenshot.png" alt="Resume screenshot" width="900" />
+</p>
 
 ## Status
 
