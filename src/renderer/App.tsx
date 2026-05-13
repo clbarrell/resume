@@ -157,11 +157,6 @@ export function App() {
     target?.focus();
   }, []);
 
-  const copyAndHide = useCallback(async (session: Pick<SessionSearchHit | SessionRecord, "id" | "resumeCommand">) => {
-    await copyCommand(session);
-    await window.resume.hideWindow?.();
-  }, [copyCommand]);
-
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if (helpOpen || settingsOpen) return; // overlays handle their own keys
@@ -303,22 +298,16 @@ export function App() {
           void copyCommand(selected);
           return;
         }
-        if (key === "Enter" && !isTextInput && selected) {
-          // Enter inside the search input is handled by the input itself
+        if (key === "Enter" && selected) {
           event.preventDefault();
-          void copyAndHide(selected);
-          return;
-        }
-        if (key === "Enter" && isTextInput && selected) {
-          event.preventDefault();
-          void copyAndHide(selected);
+          void copyCommand(selected);
           return;
         }
       }
     }
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [copyCommand, copyAndHide, filters, focusRailGroup, helpOpen, settingsOpen, query, refresh, results.length, selected]);
+  }, [copyCommand, filters, focusRailGroup, helpOpen, settingsOpen, query, refresh, results.length, selected]);
 
   const pathCounts = useMemo(() => buildPathCounts(snapshot.sessions, filters), [snapshot.sessions, filters]);
   const recentPaths = useMemo(

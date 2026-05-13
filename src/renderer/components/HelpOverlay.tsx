@@ -26,8 +26,8 @@ const GROUPS: Group[] = [
       { keys: ["↑", "↓"], label: "Move selection" },
       { keys: ["PgUp", "PgDn"], label: "Jump 10" },
       { keys: ["Home", "End"], label: "First / last" },
-      { keys: ["Enter"], label: "Copy resume command + hide window" },
-      { keys: ["⌘", "C"], label: "Copy without hiding" },
+      { keys: ["Enter"], label: "Copy resume command" },
+      { keys: ["⌘", "C"], label: "Copy resume command" },
       { keys: ["⌘", "⇧", "C"], label: "Copy session path" }
     ]
   },
