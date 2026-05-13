@@ -151,8 +151,19 @@ export function collectFileMentions(text: string): string[] {
   const matches = text.match(/(?:~?\/|\.{1,2}\/)?[\w.-]+(?:\/[\w.@-]+)+/g) ?? [];
   return unique(
     matches
-      .map((match) => match.replace(/[),.;:]+$/, ""))
-      .filter((match) => /^(?:~?\/|\.{1,2}\/)/.test(match) || /\.[A-Za-z0-9]{1,8}$/.test(match)),
+      .map((match) => match.trim().replace(/[),.;:]+$/, ""))
+      .filter((match) => {
+        const hasPrefix = /^(?:~?\/|\.{1,2}\/)/.test(match);
+        const hasExtension = /\.[A-Za-z0-9]{1,8}$/.test(match);
+        if (!hasPrefix && !hasExtension) return false;
+        // Reject single-segment names like "jdx/ruby" or "4/4" — require ≥2 path segments after the prefix.
+        const tail = match.replace(/^(?:~?\/|\.{1,2}\/)/, "");
+        const segments = tail.split("/").filter(Boolean);
+        if (segments.length < 2) return false;
+        // Reject all-numeric segments (e.g. "4/4 progress").
+        if (segments.every((segment) => /^\d+$/.test(segment))) return false;
+        return true;
+      }),
   ).slice(0, 16);
 }
 
